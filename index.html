@@ -1,9 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>My Site</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ak20481.github.io</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg: #0d0d0d;
+			--text: #e8e8e8;
+			--accent: #e8e8e8;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			font-size: 100%;
+		}
+
+		body {
+			background-color: var(--bg);
+			color: var(--text);
+			font-family: 'Montserrat', sans-serif;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100vh;
+			padding: 2rem;
+			gap: 1.5rem;
+		}
+
+		h1 {
+			font-size: clamp(2rem, 8vw, 5rem);
+			font-weight: 600;
+			white-space: nowrap;
+		}
+
+		ul {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 0.8rem;
+			text-align: center;
+		}
+
+		li {
+			font-size: clamp(1rem, 2.8vw, 1.75rem);
+			white-space: nowrap;
+		}
+
+		a {
+			color: var(--text);
+			text-decoration: none;
+			border-bottom: 1px solid transparent;
+			transition: border-color 0.2s ease;
+		}
+
+		a:hover {
+			border-bottom-color: var(--accent);
+		}
+	</style>
 </head>
+
 <body>
-  <h1>Hello World</h1>
+	<h1>Hello World</h1>
+	<ul>
+		<li><a href="http://bit.ly/AK20481">YouTube</a></li>
+		<li><a href="https://open.spotify.com/user/ltxfg6y4hz777jtcyntoc1npg?si=20adede348ab451b">Spotify</a></li>
+		<li><a href="https://anilist.co/user/AK20481/">Anilist</a></li>
+		<li><a href="https://www.pixiv.net/en/users/70595637">Pixiv</a></li>
+		<li><a href="https://soundcloud.com/user-756685775">SoundCloud</a></li>
+		<li><a href="https://www.imdb.com/user/ur182244939/watchlist/?view=grid">Movies and TV that I want to watch</a></li>
+		<li><a href="https://www.youtube.com/watch?v=qurz9oK-ruQ">Favorite song</a></li>
+		<li><a href="https://youtu.be/ApvfEjK2pZA?si=yWmqC84itqnpsrqK">Favorite song also</a></li>
+		<li><a href="https://spacehey.com/profile?id=4232720">SpaceHey</a></li>
+	</ul>
 </body>
+
 </html>
