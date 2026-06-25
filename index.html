@@ -1,250 +1,386 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ak20481.github.io</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ak20481.github.io</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                background-color: #000000;
+                font-family:
+                    "Montserrat",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    Helvetica,
+                    Arial,
+                    sans-serif;
+            }
 
-		html,
-		body {
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			background-color: #000000;
-			font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-		}
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-		body {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
+            #container {
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+            }
 
-		#container {
-			width: 100vw;
-			height: 100vh;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			position: relative;
-			overflow: hidden;
-		}
+            @media (max-aspect-ratio: 1/1) {
+                #container {
+                    width: 100vh;
+                    height: 100vw;
+                    transform: rotate(90deg);
+                    transform-origin: center;
+                }
+            }
 
-		/* Orientation lock for portrait views */
-		@media (max-aspect-ratio: 1/1) {
-			#container {
-				width: 100vh;
-				height: 100vw;
-				transform: rotate(90deg);
-				transform-origin: center;
-			}
-		}
+            .bg-text {
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                line-height: 0.8;
+                font-weight: 400;
+                color: #ffffff;
+                pointer-events: none;
+                user-select: none;
+                z-index: 1;
+                text-align: center;
+                letter-spacing: -0.04em;
+                will-change: transform;
+            }
 
-		/* Optimized 2-line title scaling to prevent scrolling */
-		.bg-text {
-			position: absolute;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			line-height: 0.8;
-			font-size: clamp(3rem, 44vh, 24vw);
-			font-weight: 400;
-			color: #ffffff;
-			pointer-events: none;
-			user-select: none;
-			z-index: 1;
-			text-align: center;
-			letter-spacing: -0.04em;
-		}
+            .grid-layer {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                z-index: 2;
+                mix-blend-mode: difference;
+            }
 
-		/* High-contrast difference blending grid */
-		.grid-layer {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-rows: repeat(2, 1fr);
-			z-index: 2;
-			mix-blend-mode: difference;
-		}
+            .grid-item {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
 
-		.grid-item {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			position: relative;
-		}
+            .logo-link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 75%;
+                height: 75%;
+                max-width: 22vh;
+                max-height: 22vh;
+                color: #ffffff;
+                text-decoration: none;
+                transition: transform 0.2s
+                    cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
 
-		/* Massive interactive link bounding boxes */
-		.logo-link {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 75%;
-			height: 75%;
-			max-width: 22vh;
-			max-height: 22vh;
-			color: #ffffff;
-			text-decoration: none;
-			transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		}
+            .logo-link:hover {
+                transform: scale(1.1);
+            }
 
-		.logo-link:hover {
-			transform: scale(1.1);
-		}
+            .logo-link svg {
+                width: 100%;
+                height: 100%;
+            }
 
-		.logo-link svg {
-			width: 100%;
-			height: 100%;
-		}
+            .yt-wrapper {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
 
-		/* Dropdown configuration */
-		.yt-wrapper {
-			position: relative;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 100%;
-			height: 100%;
-		}
+            .yt-menu {
+                position: absolute;
+                top: 65%;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                opacity: 0;
+                pointer-events: none;
+                transition:
+                    opacity 0.2s ease,
+                    transform 0.2s ease;
+                transform: translateY(15px);
+                z-index: 50;
+            }
 
-		.yt-menu {
-			position: absolute;
-			top: 65%;
-			display: flex;
-			flex-direction: column;
-			gap: 8px;
-			opacity: 0;
-			pointer-events: none;
-			transition: opacity 0.2s ease, transform 0.2s ease;
-			transform: translateY(15px);
-			z-index: 50;
-		}
+            .yt-wrapper:hover .yt-menu {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
 
-		.yt-wrapper:hover .yt-menu {
-			opacity: 1;
-			pointer-events: auto;
-			transform: translateY(0);
-		}
+            .yt-menu a {
+                color: #000000;
+                background-color: #ffffff;
+                border: 2px solid #ffffff;
+                text-decoration: none;
+                font-size: clamp(0.7rem, 1.3vw, 1rem);
+                font-weight: 700;
+                padding: 8px 16px;
+                border-radius: 4px;
+                white-space: nowrap;
+                transition:
+                    background-color 0.15s,
+                    color 0.15s,
+                    border-color 0.15s;
+                text-align: center;
+            }
 
-		.yt-menu a {
-			color: #000000;
-			background-color: #ffffff;
-			border: 2px solid #ffffff;
-			text-decoration: none;
-			font-size: clamp(0.7rem, 1.3vw, 1rem);
-			font-weight: 700;
-			padding: 8px 16px;
-			border-radius: 4px;
-			white-space: nowrap;
-			transition: background-color 0.15s, color 0.15s, border-color 0.15s;
-			text-align: center;
-		}
+            .yt-menu a:hover {
+                background-color: #000000;
+                color: #ffffff;
+                border-color: #ffffff;
+            }
+        </style>
+    </head>
 
-		.yt-menu a:hover {
-			background-color: #000000;
-			color: #ffffff;
-			border-color: #ffffff;
-		}
-	</style>
-</head>
+    <body>
+        <div id="container">
+            <div class="bg-text">
+                <div>Hello</div>
+                <div>World</div>
+            </div>
+            <div class="grid-layer">
+                <div class="grid-item">
+                    <div class="yt-wrapper">
+                        <a
+                            class="logo-link"
+                            href="https://www.youtube.com/@rank201altaccount7"
+                            target="_blank"
+                            aria-label="YouTube"
+                        >
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                                />
+                            </svg>
+                        </a>
+                        <div class="yt-menu">
+                            <a
+                                href="https://www.youtube.com/@rank201altaccount7"
+                                target="_blank"
+                                >Channel</a
+                            >
+                            <a
+                                href="https://www.youtube.com/watch?v=qurz9oK-ruQ"
+                                target="_blank"
+                                >Fav Song 1</a
+                            >
+                            <a
+                                href="https://youtu.be/ApvfEjK2pZA?si=yWmqC84itqnpsrqK"
+                                target="_blank"
+                                >Fav Song 2</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://open.spotify.com/user/ltxfg6y4hz777jtcyntoc1npg?si=20adede348ab451b"
+                        target="_blank"
+                        aria-label="Spotify"
+                    >
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://anilist.co/user/AK20481/"
+                        target="_blank"
+                        aria-label="AniList"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M24 17.53v2.421c0 .71-.391 1.101-1.1 1.101h-5l-.057-.165L11.84 3.736c.106-.502.46-.788 1.053-.788h2.422c.71 0 1.1.391 1.1 1.1v12.38H22.9c.71 0 1.1.392 1.1 1.101zM11.034 2.947l6.337 18.104h-4.918l-1.052-3.131H6.019l-1.077 3.131H0L6.361 2.948h4.673zm-.66 10.96l-1.69-5.014-1.541 5.015h3.23z"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://www.pixiv.net/en/users/70595637"
+                        target="_blank"
+                        aria-label="Pixiv"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M4.935 0A4.924 4.924 0 0 0 0 4.935v14.13A4.924 4.924 0 0 0 4.935 24h14.13A4.924 4.924 0 0 0 24 19.065V4.935A4.924 4.924 0 0 0 19.065 0zm7.81 4.547c2.181 0 4.058.676 5.399 1.847a6.118 6.118 0 0 1 2.116 4.66c.005 1.854-.88 3.476-2.257 4.563-1.375 1.092-3.225 1.697-5.258 1.697-2.314 0-4.46-.842-4.46-.842v2.718c.397.116 1.048.365.635.779H5.79c-.41-.41.19-.65.644-.779V7.666c-1.053.81-1.593 1.51-1.868 2.031.32 1.02-.284.969-.284.969l-1.09-1.73s3.868-4.39 9.553-4.39zm-.19.971c-1.423-.003-3.184.473-4.27 1.244v8.646c.988.487 2.484.832 4.26.832h.01c1.596 0 2.98-.593 3.93-1.533.952-.948 1.486-2.183 1.492-3.683-.005-1.54-.504-2.864-1.42-3.86-.918-.992-2.274-1.645-4.002-1.646Z"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://soundcloud.com/user-756685775"
+                        target="_blank"
+                        aria-label="SoundCloud"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-14.333 15.524c-.405-.365-.667-.903-.667-1.512 0-.608.262-1.146.667-1.512v3.024zm1.333.476c-.243 0-.369.003-.667-.092v-3.792c.316-.101.465-.097.667-.081v3.965zm1.333 0h-.666v-3.778l.206.121c.091-.375.253-.718.461-1.023v4.68zm1.334 0h-.667v-5.378c.206-.154.426-.286.667-.377v5.755zm1.333 0h-.667v-5.905c.251-.027.328-.046.667.006v5.899zm1.333 0h-.667v-5.7l.253.123c.119-.207.261-.395.414-.572v6.149zm6.727 0h-6.06v-6.748c.532-.366 1.16-.585 1.842-.585 1.809 0 3.275 1.494 3.41 3.386 1.303-.638 2.748.387 2.748 1.876 0 1.143-.869 2.071-1.94 2.071z"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://www.imdb.com/user/ur182244939/watchlist/?view=grid"
+                        target="_blank"
+                        aria-label="IMDb"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M14.31 9.588v.005c-.077-.048-.227-.07-.42-.07v4.815c.27 0 .44-.06.5-.165.062-.104.095-.405.095-.885v-2.866c0-.33-.004-.54-.033-.63-.022-.096-.067-.163-.14-.204zM22.416 0H1.62C.742.06.06.744 0 1.596V22.38c.06.874.712 1.542 1.555 1.617.015.003.03.003.045.003h20.845c.88-.088 1.55-.826 1.555-1.71V1.71C24 .82 23.305.07 22.416 0zM4.792 15.626H2.887V8.26h1.905v7.366zm6.54-.002H9.67v-4.97L9 15.623H7.812l-.698-4.86-.007 4.86H5.44V8.26h2.468c.083.523.16 1.048.23 1.574l.27 1.87.442-3.444h2.483v7.364zm4.977-2.18c0 .655-.044 1.094-.104 1.32-.062.22-.17.4-.326.52-.15.13-.34.218-.57.266-.223.045-.57.075-1.02.075l-.004-.002H11.98V8.26h1.426c.914 0 1.45.047 1.77.128.325.09.575.225.745.42.165.18.273.404.313.645.05.235.076.705.076 1.402v2.588zm4.944.475c0 .45-.045.764-.09.99-.06.224-.195.404-.405.568-.226.166-.48.24-.78.24-.22 0-.5-.06-.68-.136-.19-.094-.358-.237-.515-.427l-.116.47h-1.717V8.26l-.02-.003h1.8v2.4c.15-.175.315-.31.51-.4.196-.083.466-.127.69-.127.226-.003.45.036.66.115.17.07.32.185.436.33.09.125.15.27.18.42.03.138.044.43.044.87v2.054zM19.08 11.205c-.12 0-.194.04-.225.12-.03.08-.06.29-.06.624v1.946c0 .324.03.533.06.623.04.086.13.14.226.134.12 0 .272-.047.3-.14.03-.097.046-.32.046-.674l.03-.002v-1.89c0-.303-.015-.508-.06-.603-.044-.1-.195-.14-.315-.14z"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://spacehey.com/profile?id=4232720"
+                        target="_blank"
+                        aria-label="SpaceHey"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.1"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M14 20h6v-6a3 3 0 0 0 -6 0v6" />
+                            <path
+                                d="M11 8v2.5a3.5 3.5 0 0 1 -3.5 3.5h-.5a3 3 0 0 1 0 -6h4"
+                            />
+                        </svg>
+                    </a>
+                </div>
+                <div class="grid-item">
+                    <a
+                        class="logo-link"
+                        href="https://github.com/AK20481"
+                        target="_blank"
+                        aria-label="GitHub"
+                    >
+                        <svg viewBox="0 0 16 16" fill="currentColor">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"
+                            />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <script>
+            (function () {
+                var bgText = document.querySelector(".bg-text");
+                var mouseX = window.innerWidth / 2;
+                var mouseY = window.innerHeight / 2;
+                var currentX = mouseX;
+                var currentY = mouseY;
+                var textW = 0;
+                var textH = 0;
 
-<body>
-	<div id="container">
-		<div class="bg-text">
-			<div>Hello</div>
-			<div>World</div>
-		</div>
-		<div class="grid-layer">
-			<!-- Row 1: YouTube -->
-			<div class="grid-item">
-				<div class="yt-wrapper">
-					<a class="logo-link" href="https://www.youtube.com/@rank201altaccount7" target="_blank" aria-label="YouTube">
-						<svg viewBox="0 0 24 24" fill="currentColor">
-							<path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-						</svg>
-					</a>
-					<div class="yt-menu">
-						<a href="https://www.youtube.com/@rank201altaccount7" target="_blank">Channel</a>
-						<a href="https://www.youtube.com/watch?v=qurz9oK-ruQ" target="_blank">Fav Song 1</a>
-						<a href="https://youtu.be/ApvfEjK2pZA?si=yWmqC84itqnpsrqK" target="_blank">Fav Song 2</a>
-					</div>
-				</div>
-			</div>
-			<!-- Row 1: Spotify -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://open.spotify.com/user/ltxfg6y4hz777jtcyntoc1npg?si=20adede348ab451b" target="_blank" aria-label="Spotify">
-					<svg viewBox="0 0 16 16" fill="currentColor">
-						<path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288" />
-					</svg>
-				</a>
-			</div>
-			<!-- Row 1: AniList -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://anilist.co/user/AK20481/" target="_blank" aria-label="AniList">
-					<svg viewBox="0 0 24 24" fill="currentColor">
-						<path d="M24 17.53v2.421c0 .71-.391 1.101-1.1 1.101h-5l-.057-.165L11.84 3.736c.106-.502.46-.788 1.053-.788h2.422c.71 0 1.1.391 1.1 1.1v12.38H22.9c.71 0 1.1.392 1.1 1.101zM11.034 2.947l6.337 18.104h-4.918l-1.052-3.131H6.019l-1.077 3.131H0L6.361 2.948h4.673zm-.66 10.96l-1.69-5.014-1.541 5.015h3.23z" />
-					</svg>
-				</a>
-			</div>
-			<!-- Row 1: Pixiv -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://www.pixiv.net/en/users/70595637" target="_blank" aria-label="Pixiv">
-					<svg viewBox="0 0 24 24" fill="currentColor">
-						<path d="M4.935 0A4.924 4.924 0 0 0 0 4.935v14.13A4.924 4.924 0 0 0 4.935 24h14.13A4.924 4.924 0 0 0 24 19.065V4.935A4.924 4.924 0 0 0 19.065 0zm7.81 4.547c2.181 0 4.058.676 5.399 1.847a6.118 6.118 0 0 1 2.116 4.66c.005 1.854-.88 3.476-2.257 4.563-1.375 1.092-3.225 1.697-5.258 1.697-2.314 0-4.46-.842-4.46-.842v2.718c.397.116 1.048.365.635.779H5.79c-.41-.41.19-.65.644-.779V7.666c-1.053.81-1.593 1.51-1.868 2.031.32 1.02-.284.969-.284.969l-1.09-1.73s3.868-4.39 9.553-4.39zm-.19.971c-1.423-.003-3.184.473-4.27 1.244v8.646c.988.487 2.484.832 4.26.832h.01c1.596 0 2.98-.593 3.93-1.533.952-.948 1.486-2.183 1.492-3.683-.005-1.54-.504-2.864-1.42-3.86-.918-.992-2.274-1.645-4.002-1.646Z" />
-					</svg>
-				</a>
-			</div>
-			<!-- Row 2: SoundCloud -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://soundcloud.com/user-756685775" target="_blank" aria-label="SoundCloud">
-					<svg viewBox="0 0 24 24" fill="currentColor">
-						<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-14.333 15.524c-.405-.365-.667-.903-.667-1.512 0-.608.262-1.146.667-1.512v3.024zm1.333.476c-.243 0-.369.003-.667-.092v-3.792c.316-.101.465-.097.667-.081v3.965zm1.333 0h-.666v-3.778l.206.121c.091-.375.253-.718.461-1.023v4.68zm1.334 0h-.667v-5.378c.206-.154.426-.286.667-.377v5.755zm1.333 0h-.667v-5.905c.251-.027.328-.046.667.006v5.899zm1.333 0h-.667v-5.7l.253.123c.119-.207.261-.395.414-.572v6.149zm6.727 0h-6.06v-6.748c.532-.366 1.16-.585 1.842-.585 1.809 0 3.275 1.494 3.41 3.386 1.303-.638 2.748.387 2.748 1.876 0 1.143-.869 2.071-1.94 2.071z" />
-					</svg>
-				</a>
-			</div>
-			<!-- Row 2: IMDb -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://www.imdb.com/user/ur182244939/watchlist/?view=grid" target="_blank" aria-label="IMDb">
-					<svg viewBox="0 0 24 24" fill="currentColor">
-						<path d="M14.31 9.588v.005c-.077-.048-.227-.07-.42-.07v4.815c.27 0 .44-.06.5-.165.062-.104.095-.405.095-.885v-2.866c0-.33-.004-.54-.033-.63-.022-.096-.067-.163-.14-.204zM22.416 0H1.62C.742.06.06.744 0 1.596V22.38c.06.874.712 1.542 1.555 1.617.015.003.03.003.045.003h20.845c.88-.088 1.55-.826 1.555-1.71V1.71C24 .82 23.305.07 22.416 0zM4.792 15.626H2.887V8.26h1.905v7.366zm6.54-.002H9.67v-4.97L9 15.623H7.812l-.698-4.86-.007 4.86H5.44V8.26h2.468c.083.523.16 1.048.23 1.574l.27 1.87.442-3.444h2.483v7.364zm4.977-2.18c0 .655-.044 1.094-.104 1.32-.062.22-.17.4-.326.52-.15.13-.34.218-.57.266-.223.045-.57.075-1.02.075l-.004-.002H11.98V8.26h1.426c.914 0 1.45.047 1.77.128.325.09.575.225.745.42.165.18.273.404.313.645.05.235.076.705.076 1.402v2.588zm4.944.475c0 .45-.045.764-.09.99-.06.224-.195.404-.405.568-.226.166-.48.24-.78.24-.22 0-.5-.06-.68-.136-.19-.094-.358-.237-.515-.427l-.116.47h-1.717V8.26l-.02-.003h1.8v2.4c.15-.175.315-.31.51-.4.196-.083.466-.127.69-.127.226-.003.45.036.66.115.17.07.32.185.436.33.09.125.15.27.18.42.03.138.044.43.044.87v2.054zM19.08 11.205c-.12 0-.194.04-.225.12-.03.08-.06.29-.06.624v1.946c0 .324.03.533.06.623.04.086.13.14.226.134.12 0 .272-.047.3-.14.03-.097.046-.32.046-.674l.03-.002v-1.89c0-.303-.015-.508-.06-.603-.044-.1-.195-.14-.315-.14z" />
-					</svg>
-				</a>
-			</div>
-			<!-- Row 2: SpaceHey (Thinned to 1.1 stroke-width) -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://spacehey.com/profile?id=4232720" target="_blank" aria-label="SpaceHey">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-						<path d="M14 20h6v-6a3 3 0 0 0 -6 0v6" />
-						<path d="M11 8v2.5a3.5 3.5 0 0 1 -3.5 3.5h-.5a3 3 0 0 1 0 -6h4" />
-					</svg>
-				</a>
-			</div>
-			<!-- Row 2: GitHub -->
-			<div class="grid-item">
-				<a class="logo-link" href="https://github.com/AK20481" target="_blank" aria-label="GitHub">
-					<svg viewBox="0 0 16 16" fill="currentColor">
-						<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z" />
-					</svg>
-				</a>
-			</div>
-		</div>
-	</div>
-</body>
+                function calculateMaxFontSize() {
+                    var refSize = 100;
+                    bgText.style.fontSize = refSize + "px";
+                    textW = bgText.offsetWidth;
+                    textH = bgText.offsetHeight;
+                    var scale = Math.min(
+                        (window.innerWidth * 0.98) / textW,
+                        (window.innerHeight * 0.98) / textH,
+                    );
+                    bgText.style.fontSize = refSize * scale + "px";
+                    textW = bgText.offsetWidth;
+                    textH = bgText.offsetHeight;
+                }
 
+                function animate() {
+                    currentX += (mouseX - currentX) * 0.2;
+                    currentY += (mouseY - currentY) * 0.2;
+                    bgText.style.left = currentX - textW / 2 + "px";
+                    bgText.style.top = currentY - textH / 2 + "px";
+                    requestAnimationFrame(animate);
+                }
+                document.addEventListener("mousemove", function (e) {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+
+                document.addEventListener(
+                    "touchmove",
+                    function (e) {
+                        if (e.touches.length > 0) {
+                            mouseX = e.touches[0].clientX;
+                            mouseY = e.touches[0].clientY;
+                        }
+                    },
+                    { passive: true },
+                );
+
+                window.addEventListener("resize", calculateMaxFontSize);
+
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(calculateMaxFontSize);
+                }
+
+                calculateMaxFontSize();
+                animate();
+            })();
+        </script>
+    </body>
 </html>
