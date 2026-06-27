@@ -4,6 +4,7 @@ my future vision :
 ```
 	first, check how the entire thing works
 	remove make-logo-bigger-on-hover
+	setup the logos as assets, and transition to getting from other websites (if this doesn't work, fallback)
 	make logo change-color-on-hover to whichever color the website uses
 	change the spacehey logo to the correct one
 	make the soundcloud and imdb logos rectangles instead of squares (get information first so you know how much)
