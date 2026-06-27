@@ -1,6 +1,7 @@
 # ak20481.github.io
 
 my future vision :
+```
 	first, check how the entire thing works
 	remove make-logo-bigger-on-hover
 	make logo change-color-on-hover to whichever color the website uses
@@ -14,3 +15,4 @@ my future vision :
 	hey bro, this is a senior dev thing. you can't just vibe code this unfortunately. GreenSock Animation Platform and MotionPathPlugin. This is creative frontend engineering and interaction design.
 	basically, I want a **single-point transition engine** where the logo acts as a black hole and opposite simultaneously.
 alright, no more hating javascript. its time to learn webdev.
+```
