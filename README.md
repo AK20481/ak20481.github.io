@@ -8,6 +8,7 @@ my future vision :
 	change the spacehey logo to the correct one
 	make the soundcloud and imdb logos rectangles instead of squares (get information first so you know how much)
 	I don't want to see stuff that feels like pixels. not even on my fhd monitor.
+	after all that, fix on mobile
 	when mouse hover on clickable, hello world will change to name of app (single line), and transition in a cool way
 		what is cool way?
 		first, split the word into letters
