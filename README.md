@@ -3,11 +3,7 @@
 my future vision :
 ```
 	first, check how the entire thing works
-	remove make-logo-bigger-on-hover
-	setup the logos as assets, and transition to getting from other websites (if this doesn't work, fallback)
 	make logo change-color-on-hover to whichever color the website uses
-	change the spacehey logo to the correct one
-	make the soundcloud and imdb logos rectangles instead of squares (get information first so you know how much)
 	I don't want to see stuff that feels like pixels. not even on my fhd monitor.
 	after all that, fix on mobile
 	when mouse hover on clickable, hello world will change to name of app (single line), and transition in a cool way
@@ -17,4 +13,5 @@ my future vision :
 	hey bro, this is a senior dev thing. you can't just vibe code this unfortunately. GreenSock Animation Platform and MotionPathPlugin. This is creative frontend engineering and interaction design.
 	basically, I want a **single-point transition engine** where the logo acts as a black hole and opposite simultaneously.
 alright, no more hating javascript. its time to learn webdev.
+make the moving effect like compiz
 ```
